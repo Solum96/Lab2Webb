@@ -198,5 +198,5 @@ async function insertItemAsync(){
     }
     
     console.log('Insert Failed. Try again, daddy <3 xoxo');
-    document.querySelector('#addStatus').textContent = 'Insert Failed';
+    document.querySelector('#status').textContent = 'Insert Failed';
 }
