@@ -156,8 +156,9 @@ async function createItemAsync(){
         }
     }
     
+    console.log('Something went wrong. Could not create item');
     console.log('Insert Failed. Try again, daddy <3 xoxo');
-    document.querySelector('#status').textContent = 'Insert Failed';
+    document.querySelector('#status').innerHTML = 'Insert Failed';
 }
 
 async function readItemsAsync(){
@@ -207,6 +208,8 @@ async function updateItemAsync(){
             return jsonItem;
         }
     }
+    console.log('Update failed');
+    document.querySelector('#status').innerHTML = 'Update failed';
 }
 
 async function deleteItemAsync(){
@@ -222,4 +225,6 @@ async function deleteItemAsync(){
             return jsonItem;
         }
     }
+    console.log('Delete failed');
+    document.querySelector('#status').innerHTML = 'Delete failed';
 }
