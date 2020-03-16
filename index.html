@@ -8,19 +8,17 @@
     <body>
         <section id="insertSection">
             <h3>Insert</h3>
-            <input required type="text" id="bookTitle">
-            <input required type="text" id="bookAuthor">
-            <button id="addBookButton">Add Book</button>
-            <p id="addStatus"></p>
-        </section>
-        <section id="updateSection">
-            <h3>Update/Delete</h3>
-            <input required type="text" id="newTitle">
-            <input required type="text" id="newAuthor">
-            <input required type="text" id="bookId">
-            <button id="updateButton">Update</button>
-            <button id="deleteButton">Delete</button>
-            <p id="updateStatus"></p>
+            <div>
+                <select name="inputType" id="dropDown">
+                    <option value="insert">Insert</option>
+                    <option value="update">Update</option>
+                    <option value="delete">Delete</option>
+                </select>
+            </div>
+            <div id="inputFields">
+                <!-- Fields inserted with JavaScript -->
+            </div>
+            <p id="status"></p>
         </section>
         <section>
             <h3>Search</h3>
