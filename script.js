@@ -147,7 +147,7 @@ async function createItemAsync(){
     let request = baseUrl + `&op=insert&title=${title}&author=${author}`;
 
     for(let i = 0; i < 10; i++){
-        let item = await fetch(request).then(resp => resp.json());
+        let item = {'status': 'error'} //await fetch(request).then(resp => resp.json());
         if(item.status == 'success'){
             document.querySelector('#status').textContent = 'Item Inserted';
             console.log('status: ' + item.status + ' id: ' + item.id);
@@ -155,9 +155,10 @@ async function createItemAsync(){
             return item;
         }
     }
-    
+
+    console.log('Something went wrong. Could not create item');
     console.log('Insert Failed. Try again, daddy <3 xoxo');
-    document.querySelector('#status').textContent = 'Insert Failed';
+    document.querySelector('#status').innerHTML = 'Insert Failed';
 }
 
 async function readItemsAsync(){
@@ -165,7 +166,7 @@ async function readItemsAsync(){
     document.querySelector('#resultDiv').innerHTML = '';
 
     for(let i = 0; i < 10; i++){
-        let jsonItem = await fetch(request).then(resp => resp.json());
+        let jsonItem = {'status': 'error'}// await fetch(request).then(resp => resp.json());
         if(jsonItem.status == 'success')
         {
             for(let i = 0; i < jsonItem.data.length; i++){
@@ -199,7 +200,7 @@ async function updateItemAsync(){
 
     let request = baseUrl + `&op=update&title=${title}&author=${author}&id=${id}`;
     for(let i = 0; i < 10; i++){
-        let jsonItem = await fetch(request).then(resp => resp.json());
+        let jsonItem = {'status': 'error'} //await fetch(request).then(resp => resp.json());
         if(jsonItem.status == 'success'){
             console.log('status: ' + jsonItem.status);
             document.querySelector('#status').innerHTML = 'Item Updated';
@@ -207,6 +208,8 @@ async function updateItemAsync(){
             return jsonItem;
         }
     }
+    console.log('Update failed');
+    document.querySelector('#status').innerHTML = 'Update failed';
 }
 
 async function deleteItemAsync(){
@@ -214,7 +217,7 @@ async function deleteItemAsync(){
     let request = baseUrl + `&op=delete&id=${id}`;
 
     for(let i = 0; i < 10; i++){
-        let jsonItem = await fetch(request).then(resp => resp.json());
+        let jsonItem ={'status': 'error'} // await fetch(request).then(resp => resp.json());
         if(jsonItem.status == 'success'){
             console.log(jsonItem.status);
             document.querySelector('#status').innerHTML = 'Item Deleted';
@@ -222,4 +225,6 @@ async function deleteItemAsync(){
             return jsonItem;
         }
     }
+    console.log('Delete failed');
+    document.querySelector('#status').innerHTML = 'Delete failed';
 }
